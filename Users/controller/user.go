@@ -35,7 +35,7 @@ func (uc UserController) GetAllUsers(w http.ResponseWriter, r *http.Request, p h
 }
 
 func (uc UserController) GetUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	id := p.ByName("id")
+	id := r.Header.Get("id")
 
 	if !bson.IsObjectIdHex(id) {
 		w.WriteHeader(http.StatusNotFound) // 404
@@ -92,7 +92,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ ht
 }
 
 func (uc UserController) DeleteUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	id := p.ByName("id")
+	id := r.Header.Get("id")
 
 	if !bson.IsObjectIdHex(id) {
 		w.WriteHeader(404)
