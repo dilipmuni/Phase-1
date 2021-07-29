@@ -33,11 +33,11 @@ func main() {
 
 	// r.POST("/user/:id/order", uc.PlaceOrder)
 
-	go http.ListenAndServe(":9012", r)
-	http.ListenAndServe(":9014", m)
+	go http.ListenAndServe("172.28.0.3:9012", r)
+	http.ListenAndServe("172.28.0.3:9014", m)
 }
 func getSession() *mgo.Session {
-	s, err := mgo.Dial("mongodb://localhost")
+	s, err := mgo.Dial("mongodb://172.28.0.2")
 
 	if err != nil {
 		panic(err)
