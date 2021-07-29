@@ -16,9 +16,9 @@ func main() {
 	uc := controller.NewUserController(getSession())
 
 	r.GET("/users", uc.GetAllUsers)
-	r.GET("/user/:id", uc.GetUser)
+	r.GET("/user", uc.GetUser)
 	r.POST("/user", uc.CreateUser)
-	r.DELETE("/user/:id", uc.DeleteUser)
+	r.DELETE("/user", uc.DeleteUser)
 
 	m.GET("/_carts", uc.GetAllCarts)
 	m.POST("/_carts", uc.CreateCart)
